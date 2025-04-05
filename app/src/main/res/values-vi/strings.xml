@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="air_pressure_insert_hpa">%1$d hPa</string>
+    <string name="air_pressure_insert_mmhg">%1$d mmHg</string>
+    <string name="air_pressure_insert_inhg">%1$d inHg</string>
+    <string name="air_pressure_name_hpa">HectoPascal (hPa)</string>
+    <string name="air_pressure_name_mmhg">Milimét thủy ngân (mmHg)</string>
+    <string name="air_pressure_name_inhg">Inch thủy ngân (inHg)</string>
+    <string name="app_name">Thời tiết</string>
+    <string name="button_search">Nút tìm kiếm</string>
+    <string name="button_settings">Nút cài đặt</string>
+    <string name="city_default">Hà Nội</string>
+    <string name="clear_sky">Trời quang</string>
+    <string-array name="days_of_week">
+        <item>Thứ Hai</item>
+        <item>Thứ Ba</item>
+        <item>Thứ Tư</item>
+        <item>Thứ Năm</item>
+        <item>Thứ Sáu</item>
+        <item>Thứ Bảy</item>
+        <item>Chủ Nhật</item>
+    </string-array>
+    <string name="degree_day_night">Ban ngày %1$d°\nBan đêm %2$d°</string>
+    <string name="degree_feels_like">Cảm giác như %1$s</string>
+    <string name="desc_button_back">Quay lại</string>
+    <string name="desc_img_calendar">Biểu tượng lịch</string>
+    <string name="desc_img_clock">Biểu tượng đồng hồ</string>
+    <string name="desc_img_main">Hình nền tiêu đề chính</string>
+    <string name="desc_img_main_weather">Biểu tượng thời tiết</string>
+    <string name="desc_img_pressure">Biểu tượng áp suất</string>
+    <string name="desc_img_pressure_indicator">Chỉ báo tăng hoặc giảm áp suất khí quyển</string>
+    <string name="desc_img_rain">Biểu tượng mưa</string>
+    <string name="desc_img_rain_indicator">Chỉ báo tăng hoặc giảm lượng mưa</string>
+    <string name="desc_img_sun">Biểu tượng mặt trời</string>
+    <string name="desc_img_sunrise">Biểu tượng mặt trời mọc</string>
+    <string name="desc_img_sunset">Biểu tượng mặt trời lặn</string>
+    <string name="desc_img_temperature">Biểu tượng nhiệt độ</string>
+    <string name="desc_img_uv_indicator">Chỉ báo tăng hoặc giảm chỉ số UV</string>
+    <string name="desc_img_weather">Biểu tượng thời tiết</string>
+    <string name="desc_img_wind">Biểu tượng tốc độ gió</string>
+    <string name="desc_img_wind_indicator">Chỉ báo tăng hoặc giảm tốc độ gió</string>
+    <string name="desc_scroll_precipitation">Danh sách lượng mưa dự báo</string>
+    <string name="drizzle">Mưa phùn</string>
+    <string name="fog">Sương mù</string>
+    <string name="freezing_drizzle">Mưa phùn đóng băng</string>
+    <string name="freezing_rain">Mưa đóng băng</string>
+    <string name="heavy_drizzle">Mưa phùn lớn</string>
+    <string name="heavy_rain">Mưa lớn</string>
+    <string name="heavy_showers">Mưa rào lớn</string>
+    <string name="heavy_snow">Tuyết rơi dày</string>
+    <string name="ice_fog">Sương mù băng giá</string>
+    <string name="info_last_update">Cập nhật lần cuối\n%2$d %1$s, %3$s</string>
+    <string name="light_drizzle">Mưa phùn nhẹ</string>
+    <string name="light_freezing_drizzle">Mưa phùn đóng băng nhẹ</string>
+    <string name="light_freezing_rain">Mưa đóng băng nhẹ</string>
+    <string name="light_rain">Mưa nhỏ</string>
+    <string name="light_showers">Mưa rào nhỏ</string>
+    <string name="light_snow">Tuyết rơi nhẹ</string>
+    <string name="light_snow_showers">Mưa tuyết nhẹ</string>
+    <string name="light_thunderstorm_hail">Dông nhẹ có mưa đá</string>
+    <string name="mainly_clear">Trời hầu như quang</string>
+    <string name="no_internet_connection">Bật dữ liệu di động hoặc kết nối Wi-Fi</string>
+    <string name="overcast">Trời u ám</string>
+    <string name="partly_cloudy">Trời nhiều mây</string>
+    <string name="rain">Mưa</string>
+    <string name="search_title">Tìm kiếm</string>
+    <string name="showers">Mưa rào</string>
+    <string name="snow">Tuyết</string>
+    <string name="snow_grains">Hạt tuyết</string>
+    <string name="snow_showers">Mưa tuyết</string>
+    <string name="speed_insert_kmh">%1$d km/h</string>
+    <string name="speed_insert_ms">%1$d m/s</string>
+    <string name="speed_insert_mph">%1$d mph</string>
+    <string name="speed_name_kmh">Kilômét trên giờ (km/h)</string>
+    <string name="speed_name_mph">Dặm trên giờ (mph)</string>
+    <string name="speed_name_ms">Mét trên giây (m/s)</string>
+    <string name="sunrise_sunset_hours_future">trong %1$d giờ</string>
+    <string name="sunrise_sunset_hours_past">%1$d giờ trước</string>
+    <string name="sunrise_sunset_minutes_future">trong %1$d phút</string>
+    <string name="sunrise_sunset_minutes_past">%1$d phút trước</string>
+    <string name="sunrise_sunset_time_default">06:00</string>
+    <string name="temperature_name_celsius">Độ C (°C)</string>
+    <string name="temperature_name_fahrenheit">Độ F (°F)</string>
+    <string name="text_now">Bây giờ</string>
+    <string name="thunderstorm">Dông</string>
+    <string name="thunderstorm_hail">Dông có mưa đá</string>
+    <string name="title_air_pressure_settings">Áp suất không khí</string>
+    <string name="title_chance_precipitation">Khả năng có mưa</string>
+    <string name="title_day_forecast">Dự báo theo ngày</string>
+    <string name="title_hourly_forecast">Dự báo theo giờ</string>
+    <string name="title_language_category">Ngôn ngữ</string>
+    <string name="title_language_settings">Chọn ngôn ngữ</string>
+    <string name="title_pressure">Áp suất</string>
+    <string name="title_rain_chance">Khả năng mưa</string>
+    <string name="title_settings">Cài đặt</string>
+    <string name="title_sunrise">Mặt trời mọc</string>
+    <string name="title_sunset">Mặt trời lặn</string>
+    <string name="title_wind_speed">Tốc độ gió</string>
+    <string name="title_wind_settings">Gió</string>
+    <string name="title_temp_settings">Nhiệt độ</string>
+    <string name="title_units_category">Đơn vị</string>
+    <string name="title_uv_index">Chỉ số UV</string>
+    <string name="provider_absence_notification">Cho phép dịch vụ vị trí cập nhật dữ liệu thời tiết mới nhất.</string>
+    <string name="weather_type_default">Nhiều mây</string>
+</resources>
