@@ -16,7 +16,6 @@ public class SearchHistoryDAO {
         this.dbHelper = dbHelper;
     }
 
-    // Thêm truy vấn vào lịch sử
     public void insertSearchQuery(String query) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -24,7 +23,6 @@ public class SearchHistoryDAO {
         db.insert(SearchHistoryDatabaseHelper.TABLE_NAME, null, values);
     }
 
-    // Lấy tất cả lịch sử tìm kiếm
     public List<SearchHistoryItem> getAllSearchHistory() {
         List<SearchHistoryItem> history = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -45,7 +43,6 @@ public class SearchHistoryDAO {
         return history;
     }
 
-    // Xóa lịch sử tìm kiếm theo truy vấn
     public void deleteSearchHistory(String query) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.delete(
@@ -55,7 +52,6 @@ public class SearchHistoryDAO {
         );
     }
 
-    // Xóa tất cả lịch sử tìm kiếm
     public void deleteAllHistory() {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.delete(SearchHistoryDatabaseHelper.TABLE_NAME, null, null);

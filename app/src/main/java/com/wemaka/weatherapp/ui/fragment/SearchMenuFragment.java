@@ -98,7 +98,7 @@ public class SearchMenuFragment extends BottomSheetDialogFragment {
 				SearchHistoryDatabaseHelper dbHelper = new SearchHistoryDatabaseHelper(requireContext());
 				SearchHistoryDAO dao = new SearchHistoryDAO(dbHelper);
 				if (!dao.isQueryExists(query)) {
-					dao.insertSearchQuery(query);  // Chỉ thêm nếu chưa tồn tại
+					dao.insertSearchQuery(query);
 				}
 				model.searchLocation(query).observe(getViewLifecycleOwner(), resource -> {
 					if (resource.isSuccess() && resource.getData() != null) {
@@ -108,6 +108,8 @@ public class SearchMenuFragment extends BottomSheetDialogFragment {
 						showToast(resource.getMessage());
 					}
 				});
+
+				navigateToMainFragment();
 
 				return false;
 			}
@@ -144,6 +146,7 @@ public class SearchMenuFragment extends BottomSheetDialogFragment {
 	public void setSearchQuery(String query) {
 		binding.searchView.setQuery(query, true);
 	}
+
 	private void setupFullHeight(@NonNull View bottomSheet) {
 		ViewGroup.LayoutParams layoutParams = bottomSheet.getLayoutParams();
 		layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT;
@@ -173,5 +176,15 @@ public class SearchMenuFragment extends BottomSheetDialogFragment {
 
 	private void showToast(@NonNull String message) {
 		Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show();
+	}
+
+	private void navigateToMainFragment() {
+		FragmentTransaction transaction = requireActivity()
+				.getSupportFragmentManager()
+				.beginTransaction();
+
+		transaction.replace(R.id.placeHolder, new MainFragment());
+		transaction.addToBackStack(null);
+		transaction.commit();
 	}
 }

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +16,7 @@ import com.wemaka.weatherapp.data.local.SearchHistoryDAO;
 import com.wemaka.weatherapp.data.local.SearchHistoryDatabaseHelper;
 import com.wemaka.weatherapp.data.model.SearchHistoryItem;
 import com.wemaka.weatherapp.ui.adapter.SearchHistoryAdapter;
+import com.wemaka.weatherapp.ui.fragment.SearchMenuFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,28 +51,26 @@ public class SearchHistoryFragment extends Fragment {
         btnBack = view.findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
             FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-            transaction.setCustomAnimations(
-                    R.anim.slide_in_right,
-                    R.anim.slide_out_right
-            );
-
-            requireActivity().getSupportFragmentManager().popBackStack();
+            MainFragment mainFragment = new MainFragment();
+            transaction.replace(R.id.placeHolder, mainFragment);
+            transaction.addToBackStack(null);
             transaction.commit();
         });
 
-        // Gán listener để xử lý sự kiện click
         adapter.setOnItemClickListener(new SearchHistoryAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(SearchHistoryItem item) {
-                SearchMenuFragment searchMenuFragment = new SearchMenuFragment();
-                Bundle args = new Bundle();
-                args.putString("query", item.getQuery());
-                searchMenuFragment.setArguments(args);
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                Fragment existing = fragmentManager.findFragmentByTag(SearchMenuFragment.TAG);
 
-                FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.placeHolder, searchMenuFragment)
-                        .addToBackStack(null)
-                        .commit();
+                if (existing == null) {
+                    SearchMenuFragment searchMenuFragment = SearchMenuFragment.newInstance();
+                    Bundle args = new Bundle();
+                    args.putString("query", item.getQuery());
+                    searchMenuFragment.setArguments(args);
+
+                    searchMenuFragment.show(fragmentManager, SearchMenuFragment.TAG);
+                }
             }
 
             @Override
