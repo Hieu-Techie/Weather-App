@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -24,6 +25,8 @@ import com.wemaka.weatherapp.databinding.FragmentSearchMenuBinding;
 import com.wemaka.weatherapp.store.proto.LocationCoordProto;
 import com.wemaka.weatherapp.ui.MainActivity;
 import com.wemaka.weatherapp.ui.viewmodel.MainViewModel;
+import com.wemaka.weatherapp.data.local.SearchHistoryDatabaseHelper;
+import com.wemaka.weatherapp.data.local.SearchHistoryDAO;
 
 import eightbitlab.com.blurview.BlurViewFacade;
 import eightbitlab.com.blurview.RenderEffectBlur;
@@ -52,6 +55,27 @@ public class SearchMenuFragment extends BottomSheetDialogFragment {
 
 		addBlurBackground();
 
+		String query = getArguments() != null ? getArguments().getString("query") : "";
+
+		if (!query.isEmpty()) {
+			binding.searchView.setQuery(query, false);
+			binding.searchView.onActionViewExpanded();
+			binding.searchView.setIconified(false);
+
+			// Gọi sự kiện submit tìm kiếm
+			binding.searchView.setQuery(query, true);
+		}
+
+		binding.btnViewHistory.setOnClickListener(v -> {
+			FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+			transaction.replace(R.id.placeHolder, new SearchHistoryFragment())
+					.addToBackStack(null)
+					.commit();
+
+			dismiss();
+		});
+
+
 		SearchMenuAdapter searchMenuAdapter = new SearchMenuAdapter();
 		searchMenuAdapter.setOnItemClickListener(item -> {
 			Log.i(TAG, "Click: " + item.getLatitude() + " : " + item.getLongitude());
@@ -71,6 +95,11 @@ public class SearchMenuFragment extends BottomSheetDialogFragment {
 		binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 			@Override
 			public boolean onQueryTextSubmit(String query) {
+				SearchHistoryDatabaseHelper dbHelper = new SearchHistoryDatabaseHelper(requireContext());
+				SearchHistoryDAO dao = new SearchHistoryDAO(dbHelper);
+				if (!dao.isQueryExists(query)) {
+					dao.insertSearchQuery(query);  // Chỉ thêm nếu chưa tồn tại
+				}
 				model.searchLocation(query).observe(getViewLifecycleOwner(), resource -> {
 					if (resource.isSuccess() && resource.getData() != null) {
 						searchMenuAdapter.submitList(resource.getData());
@@ -112,6 +141,9 @@ public class SearchMenuFragment extends BottomSheetDialogFragment {
 		return new SearchMenuFragment();
 	}
 
+	public void setSearchQuery(String query) {
+		binding.searchView.setQuery(query, true);
+	}
 	private void setupFullHeight(@NonNull View bottomSheet) {
 		ViewGroup.LayoutParams layoutParams = bottomSheet.getLayoutParams();
 		layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT;
