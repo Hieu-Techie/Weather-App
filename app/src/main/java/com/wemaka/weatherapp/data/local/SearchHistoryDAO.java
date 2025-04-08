@@ -20,6 +20,7 @@ public class SearchHistoryDAO {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(SearchHistoryDatabaseHelper.COLUMN_QUERY, query);
+        values.put(SearchHistoryDatabaseHelper.COLUMN_TIMESTAMP, System.currentTimeMillis());
         db.insert(SearchHistoryDatabaseHelper.TABLE_NAME, null, values);
     }
 

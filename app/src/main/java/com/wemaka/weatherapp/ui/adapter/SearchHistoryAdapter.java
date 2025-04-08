@@ -10,7 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.wemaka.weatherapp.R;
 import com.wemaka.weatherapp.data.model.SearchHistoryItem;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdapter.ViewHolder> {
 
@@ -49,6 +53,11 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
             }
         });
 
+        Date date = new Date(item.getTimestamp());
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm dd/MM/yyyy", Locale.getDefault());
+        String formattedDate = formatter.format(date);
+        holder.tvTimestamp.setText(formattedDate);
+
         if (holder.deleteButton != null) {
             holder.deleteButton.setOnClickListener(v -> {
                 if (listener != null) {
@@ -75,12 +84,14 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
+        TextView tvTimestamp;
         ImageView deleteButton;
 
         public ViewHolder(View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.tvQuery);
             deleteButton = itemView.findViewById(R.id.ivDelete);
+            tvTimestamp = itemView.findViewById(R.id.timestampTextView);
         }
     }
 }

@@ -23,7 +23,7 @@ public class SearchHistoryDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " + TABLE_NAME + " (" +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_QUERY + " TEXT NOT NULL, " +
-                COLUMN_TIMESTAMP + " INTEGER DEFAULT CURRENT_TIMESTAMP)");
+                COLUMN_TIMESTAMP + " INTEGER DEFAULT (strftime('%s','now') * 1000))");
     }
 
     @Override
