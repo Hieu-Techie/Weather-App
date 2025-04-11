@@ -34,7 +34,7 @@ The app design is based on a mockup from <a href="https://www.figma.com/communit
 
 ## Demonstration
 
-https://github.com/user-attachments/assets/68beefd5-d197-4094-bb69-ef21f154f1b4
+https://github.com/user-attachments/assets/7047568f-3a5e-4b9f-96c8-1f49a7e76fb2
 
 ## Requirements
 
